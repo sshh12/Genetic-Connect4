@@ -4,7 +4,9 @@ import numpy as np
 import random
 
 class BaseAgent(object):
-
+    """
+    Base Agent Class
+    """
     def __init__(self):
         pass
 
@@ -15,7 +17,9 @@ class BaseAgent(object):
         pass
 
 class HumanAgent(BaseAgent):
-
+    """
+    Agent that gets its move from user input
+    """
     def get_move(self, board):
 
         print(board)
@@ -23,9 +27,17 @@ class HumanAgent(BaseAgent):
         return int(input(' Col > '))
 
 class MiniMaxAgent(BaseAgent):
-
+    """
+    Agent that uses minimax and heuristic based on dna
+    """
     def __init__(self, dna=None):
+        """
+        Creates a new Agent
 
+        Note
+        ----
+        If dna is not provided it is randomly generated.
+        """
         if not dna:
             self.dna = [ random.randrange(2, 8) ]
             self.dna.extend([ random.randrange(-20, 300) for _ in range(14) ])

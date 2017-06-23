@@ -2,9 +2,22 @@ from connect4.tools import *
 import numpy as np
 
 class Connect4Game(object):
+    """
+    Connect4 game
 
+    This class will create a game between two agents.
+    """
     def __init__(self, pA, pB, size=(6, 7)):
+        """
+        Creates the game
 
+        Parameters
+        ----------
+        pA, pB : MiniMaxAgent
+            The 2 players/agents
+        size : tuple of int
+            The size of the board
+        """
         self.playerA = pA
         self.playerB = pB
 
@@ -43,7 +56,14 @@ class Connect4Game(object):
 
 
     def get_winner(self):
+        """
+        Gets the winner of the game
 
+        Returns
+        -------
+        int
+            1 for player A, 2 for player B, 0 for no winner/tie
+        """
         if 4 in self._get_scores(1):
             return 1
         elif 4 in self._get_scores(2):
@@ -52,7 +72,16 @@ class Connect4Game(object):
             return 0
 
     def play(self):
+        """
+        Plays the game to completion
 
+        This will loop through each round until an agent has won or
+        a tie has occured.
+
+        Note
+        ----
+        Always starts will player A
+        """
         turn = 1
 
         while not self.get_winner():
