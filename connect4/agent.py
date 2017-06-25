@@ -28,7 +28,7 @@ class HumanAgent(BaseAgent):
 
 class MiniMaxAgent(BaseAgent):
     """
-    Agent that uses minimax and heuristic based on dna
+    Agent that uses minimax with a heuristic based on dna
     """
     def __init__(self, dna=None):
         """
@@ -82,7 +82,12 @@ class MiniMaxAgent(BaseAgent):
                 most_dec_diagonal(board, id_)]
 
     def _eval_board(self, board, depth=0):
+        """
+        Computes a score for the given board state
 
+        This method collects data from the board then multiplies them
+        by corresponding values found in the dna array.
+        """
         points = self._get_points(board, self.id_)
         enemy_points = self._get_points(board, self.id_ ^ 3)
 
@@ -113,7 +118,13 @@ class MiniMaxAgent(BaseAgent):
         return str(self.dna)
 
     def _alphabeta(self, board, depth, alpha, beta, maximize):
+        """
+        Standard Alphabeta pruning for minimax
 
+        Note
+        ----
+        Adapted from https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
+        """
         if depth == self.depth:
 
             return self._eval_board(board, depth)

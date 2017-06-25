@@ -45,6 +45,7 @@ def get_fitnesses(population, method='combo'):
                 fitnesses[population.index(a)] += 1
             elif w == 2:
                 fitnesses[population.index(b)] += 1
+            # else a tie occured
 
     elif method == 'reduce':
 
@@ -52,8 +53,7 @@ def get_fitnesses(population, method='combo'):
 
         while len(indices) > 1:
 
-            a_index = random.choice(indices)
-            b_index = random.choice(indices)
+            a_index, b_index = random.choice(indices), random.choice(indices)
 
             if a_index != b_index:
 
@@ -68,6 +68,10 @@ def get_fitnesses(population, method='combo'):
                 elif w == 2:
                     fitnesses[b_index] += 1
                     indices.remove(a_index)
+                # else a tie occured
+
+    else:
+        raise ValueError('Invalid fitness method.')
 
     return fitnesses
 

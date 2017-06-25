@@ -1,5 +1,5 @@
 
-MAX = 999999
+MAX = 9e6
 MIN = -MAX
 
 def most_vertical(board, id_):

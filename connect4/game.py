@@ -13,7 +13,7 @@ class Connect4Game(object):
 
         Parameters
         ----------
-        pA, pB : MiniMaxAgent
+        pA, pB : MiniMaxAgent or HumanAgent
             The 2 players/agents
         size : tuple of int
             The size of the board
